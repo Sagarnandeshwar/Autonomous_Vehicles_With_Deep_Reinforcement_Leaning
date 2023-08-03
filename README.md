@@ -4,14 +4,22 @@ In the project, I have built two different deep reinforcement learning algorithm
 ## Environment: OpenAI Gym’s CarRacing-v0 
 It is an F1 racing track, where each state is a 96 x 96 RGB pixel frame that represents a top-down view of a car and its surroundings i.e., track and field. The Action Space has three components to control direction, gas and brakes. The reward is -0.1 every frame and +1000/N for every track tile visited, where N is the total number of tiles visited in the track. 
 
+![website](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/website.png)
+
 ## Simple Q learning 
 Q − learning is a way for an agent to learn how to make decisions based on feedback it receives from its environment. The Q-learning algorithm works by maintaining a table of values for each state-action pair, called the Q-table. The values in the Q-table represent the expected future reward that the agent can receive by taking a particular action in a particular state. The agent uses the Q-table to determine which action to take in each state. 
+
+![ql](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/ql.png)
 
 ## Deep Q learning (DQL) 
 Deep Q − learning is a variant of Q-learning that uses a deep neural network as a function approximator to learn the Q-function. In deep Q-learning, a deep neural network is used to estimate the Q-values for each state-action pair. The neural network takes the state as input and outputs a Q-value for each possible action. The neural network is trained using the Q-learning algorithm, where the target Q-value is computed using the Bellman equation and the experience replay technique is used to break the correlations between consecutive samples. 
 
+![dql](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/dql.png)
+
 ## Double Deep Q learning (DDQL) 
 Double Deep Q − Networks3 (DDQN) is a variant of deep Q-learning that addresses the problem of overestimation of Q-values that can occur in standard Q-learning and other Q-learning variants. In standard Q-learning, the Q-values can be overestimated because the maximum Q-value for the next state is used in the update rule, which may not always be accurate, especially in noisy or complex environments. DDQN uses a two network, called the target networks, to estimate the target Q-values for the update rule. The target network is a copy of the main network, which is periodically updated to match the parameters of the main network. The target network is used to estimate the Q-value for the next state and action, while the main network is used to select the action to take in the currentstate. By decoupling the selection of the action from the estimation of the target Q-value, DDQN is less prone to overestimation of Q-values, which can lead to more stable and accurate learning. 
+
+![ddql](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/ddql.png)
 
 ## Goal 
 The goal is to make the car stay on track as long as possible. 
@@ -20,12 +28,14 @@ The goal is to make the car stay on track as long as possible.
 ### Deep Q learning (DQL) 
 #### Architecture 
 Loss function: Mean Squared Error Optimization: Adam with Learning rate = 0.001 and epsilon=1e-7 
+![dqla](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/dqla.png)
 #### Algorithm 
 For each episode, the model stacks three consecutive steps taken with the same action as a single state. This state stack is then converted into grey scale image and fed into the DQL model. The model then predicts q values of all the action in action space for this state stack. It then selects the action based on Greedy-Epsilon policy. It then records the observation (current state, action, next state, done) which is used during mini batch training. This process is repeated until the episode has been terminated. 
 
 ### Double Deep Q learning (DDQL) 
 #### Architecture 
 Loss function: Mean Squared Error Optimization: Adam with Learning rate = 0.00001 
+![ddqla](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/ddqla.png)
 #### Algorithm 
 For each episode, the model stacks three consecutive steps taken with the same action as a single state. This state stack fed into the DDQL model. The target model then predicts q values of all the action in action space for this state stack. The algorithm then selects the action based on Greedy-Epsilon policy. It then records the observation (current state, action, next state, done) which is used during mini batch training to train the main model. This process is repeated until the episode has been terminated. Periodically we update the target model using the main model.  
 
@@ -48,6 +58,7 @@ It took almost 25 hours to train each models. I could not run the program contin
 I ran 25 episodes and recorded the observation. In the evaluation I set the epsilon to be 0.0, i.e., complete exploitation. 
 
 ## Result 
+![result](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/result.png)
 
 ## Conclusion  
 My DQL implementation has, evidently, outperformed the DDQL methods. However, when I Compared to the early stage DQL with DDQL, their performance was quite similar. This may indicate the DDQL need a much more resources to train or maybe I need to change hyper parameters such frame depth and exploration rate. 
