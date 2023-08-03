@@ -22,7 +22,7 @@ Double Deep Q − Networks3 (DDQN) is a variant of deep Q-learning that addresse
 ![ddql](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/ddql.png)
 
 ## Goal 
-The goal is to make the car stay on track as long as possible. 
+The goal is to make the car stay on track as long as possible. The episode finishes when all of the tiles are visited. The car can also go outside of the playfield - that is, far off the track, in which case it will receive -100 reward and die.
 
 ## Implementation  
 ### Deep Q learning (DQL) 
