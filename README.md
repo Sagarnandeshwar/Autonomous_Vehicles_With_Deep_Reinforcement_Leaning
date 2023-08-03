@@ -58,6 +58,11 @@ It took almost 25 hours to train each models. I could not run the program contin
 I ran 25 episodes and recorded the observation. In the evaluation I set the epsilon to be 0.0, i.e., complete exploitation. 
 
 ## Result 
+### DQL Run
+![dql_run](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/dql_run.gif)
+### DDQL Run
+![ddql_run](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/ddqlrun.gif)
+### Performance 
 ![result](https://github.com/Sagarnandeshwar/Autonomous_Vehicles_With_Deep_Reinforcement_Leaning/blob/main/image/result.png)
 
 ## Conclusion  
